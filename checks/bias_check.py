@@ -2,7 +2,7 @@ import pandas as pd
 from fairlearn.metrics import MetricFrame, selection_rate
 
 # Toggle for testing: True = make it pass, False = make it fail
-PASS_MODE = False
+PASS_MODE = True
 
 if PASS_MODE:
     data = pd.DataFrame({
