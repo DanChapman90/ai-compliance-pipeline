@@ -16,16 +16,7 @@ AI systems can sometimes be **biased**, treating some groups unfairly. Also, pri
 ---
 
 flowchart TD
-    A[💻 Developer Pushes Code] --> B[🔍 GitHub Actions Triggered]
-    B --> C[📊 Run Bias Check]
-    C -->|Pass| D[✅ Compliance Passed]
-    C -->|Fail| E[❌ Compliance Failed]
-    B --> F[🕵️ Run PII Detection]
-    F -->|Pass| D
-    F -->|Fail| E
-    E --> G[📧 Email Notification Sent]
-    D --> H[📥 Merge to Main Branch]
-    E --> I[🚫 Block Merge]
+    A[💻 Developer Pushes Code] --> B[🔍 GitHub Actions Triggered]--> C[📊 Run Bias Check] -->|Pass| D[✅ Compliance Passed] -->|Fail| E[❌ Compliance Failed] --> F[🕵️ Run PII Detection] -->|Pass| D -->|Fail|  --> G[📧 Email Notification Sent] --> H[📥 Merge to Main Branch] --> I[🚫 Block Merge]
 
 
 This is just a starting point! Possible improvements include:
