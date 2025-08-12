@@ -16,53 +16,6 @@ AI systems can sometimes be **biased**, treating some groups unfairly. Also, pri
 
 ---
 
-## How to use it  
-
-1. Download or clone this repository.  
-2. Make sure you have Python installed.  
-3. Set up a virtual environment:  
-   ```bash
-   python -m venv venv
-Activate the virtual environment:
-
-Windows:
-
-bash
-Copy
-Edit
-.\venv\Scripts\activate
-Mac/Linux:
-
-bash
-Copy
-Edit
-source venv/bin/activate
-Install the required packages:
-
-bash
-Copy
-Edit
-pip install -r requirements.txt
-Run the bias check:
-
-bash
-Copy
-Edit
-python checks/bias_check.py
-Run the PII check:
-
-bash
-Copy
-Edit
-python checks/pii_check.py
-Who is this for?
-AI developers wanting to ensure their models are fair.
-
-Data scientists protecting private information.
-
-Anyone interested in ethical AI and data privacy.
-
-What’s next?
 This is just a starting point! Possible improvements include:
 
 ⚖️ More advanced fairness checks
