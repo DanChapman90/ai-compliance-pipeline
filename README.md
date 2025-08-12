@@ -15,10 +15,6 @@ AI systems can sometimes be **biased**, treating some groups unfairly. Also, pri
 - 🕵️‍♂️ **PII Check:** Scans data to find Personally Identifiable Information like names, phone numbers, emails, or ID
 ---
 
-flowchart TD
-    A[💻 Developer Pushes Code] --> B[🔍 GitHub Actions Triggered]--> C[📊 Run Bias Check] -->|Pass| D[✅ Compliance Passed] -->|Fail| E[❌ Compliance Failed] --> F[🕵️ Run PII Detection] -->|Pass| D -->|Fail|  --> G[📧 Email Notification Sent] --> H[📥 Merge to Main Branch] --> I[🚫 Block Merge]
-
-
 This is just a starting point! Possible improvements include:
 
 ⚖️ More advanced fairness checks
