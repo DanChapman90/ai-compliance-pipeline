@@ -40,7 +40,7 @@ jobs:
         uses: dawidd6/action-send-mail@v3
         with:
           # Use your SMTP details here
-          server_address: smtp.example.com
+          server_address: smtp.gmail.com
           server_port: 587
           username: ${{ secrets.SMTP_USERNAME }}
           password: ${{ secrets.SMTP_PASSWORD }}
@@ -48,5 +48,5 @@ jobs:
           body: |
             The AI compliance checks workflow has failed.
             Please check your GitHub Actions logs: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-          to: your-email@example.com
-          from: github-actions@example.com
+          to: danielchapman782@gmail.com
+          from: danielchapman782@gmail.com
