@@ -12,9 +12,10 @@ AI systems can sometimes be **biased**, treating some groups unfairly. Also, pri
 
 ## What does it do?  
 - 🔍 **Bias Check:** Compares AI predictions across different groups to detect unfair treatment.  
-- 🕵️‍♂️ **PII Check:** Scans data to find Personally Identifiable Information like names, phone numbers, emails, or IDs.
+- 🕵️‍♂️ **PII Check:** Scans data to find Personally Identifiable Information like names, phone numbers, emails, or ID
+---
 
-  flowchart TD
+flowchart TD
     A[💻 Developer Pushes Code] --> B[🔍 GitHub Actions Triggered]
     B --> C[📊 Run Bias Check]
     C -->|Pass| D[✅ Compliance Passed]
@@ -26,8 +27,6 @@ AI systems can sometimes be **biased**, treating some groups unfairly. Also, pri
     D --> H[📥 Merge to Main Branch]
     E --> I[🚫 Block Merge]
 
-
----
 
 This is just a starting point! Possible improvements include:
 
