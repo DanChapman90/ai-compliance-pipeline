@@ -1,18 +1,16 @@
-name: AI Compliance Checks
+name: Compliance Checks
 
 on:
   push:
-    branches:
-      - '**'
+    branches: [ main ]
   pull_request:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
-  compliance-checks:
+  run-checks:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout repo
         uses: actions/checkout@v3
 
       - name: Set up Python
@@ -31,22 +29,15 @@ jobs:
       - name: Run PII Check
         run: python checks/pii_check.py
 
-  notify-on-failure:
-    needs: compliance-checks
-    if: failure()
-    runs-on: ubuntu-latest
-    steps:
-      - name: Send failure email
+      - name: Send Email if Failed
+        if: failure()
         uses: dawidd6/action-send-mail@v3
         with:
-          # Use your SMTP details here
           server_address: smtp.gmail.com
           server_port: 587
           username: ${{ secrets.SMTP_USERNAME }}
           password: ${{ secrets.SMTP_PASSWORD }}
-          subject: "⚠️ AI Compliance Checks Failed"
-          body: |
-            The AI compliance checks workflow has failed.
-            Please check your GitHub Actions logs: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-          to: danielchapman782@gmail.com
-          from: danielchapman782@gmail.com
+          subject: "🚨 Compliance Check Failed in GitHub Actions"
+          to: "danielchapman782@gmail.com"
+          from: "danielchapman782@gmail.com"
+          body: "One or more compliance checks failed. Please review the latest GitHub Actions run."
