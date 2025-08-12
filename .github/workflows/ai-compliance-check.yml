@@ -1,0 +1,52 @@
+name: AI Compliance Checks
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  compliance-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas fairlearn
+
+      - name: Run Bias Check
+        run: python checks/bias_check.py
+
+      - name: Run PII Check
+        run: python checks/pii_check.py
+
+  notify-on-failure:
+    needs: compliance-checks
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send failure email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          # Use your SMTP details here
+          server_address: smtp.example.com
+          server_port: 587
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: "⚠️ AI Compliance Checks Failed"
+          body: |
+            The AI compliance checks workflow has failed.
+            Please check your GitHub Actions logs: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          to: your-email@example.com
+          from: github-actions@example.com
